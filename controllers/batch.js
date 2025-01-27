@@ -90,7 +90,13 @@ exports.deleteBatch = asyncHandler(async (req, res, next) => {
       .json({ message: "Batch not found with id of ${req.params.id}" });
   }
 
-  batch.remove();
+  const data = await Batch.findByIdAndDelete(req.params.id);
+
+  if (!data) {
+    return res
+      .status(404)
+      .json({ message: `Batch not found with id of ${req.params.id}` });
+  }
 
   res.status(200).json({
     success: true,

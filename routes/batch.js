@@ -15,6 +15,8 @@ router.get("/:id", getBatch);
 
 router.post("/createBatch", createBatch);
 router.put("/:id", protect, updateBatch);
-router.delete("/:id", protect, deleteBatch);
+router.delete("/:id", 
+  // protect,
+   deleteBatch);
 
-module.exports = router;
+module.exports = router; 
